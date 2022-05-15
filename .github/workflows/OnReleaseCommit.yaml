@@ -7,8 +7,8 @@ jobs:
   get-branches-to-propagate:
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v3
       - name: get branches to propagate
-      - uses: actions/checkout@v2
-      - run: |
+        run: |
           ./branchToPropagate.sh ${{ github.ref_name }}
-        shell: bash
