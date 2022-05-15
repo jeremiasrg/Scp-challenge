@@ -3,23 +3,23 @@
 # filter only "release/" branches
 # remove "release/" from the brach names
 # Sort as number and remove multilines
-eval "releaseBranches=$(git branch -r | grep 'release/' | tr -d 'origin/release/' | sort -n | tr '\n' ',' | tr -d ' ')"
+releaseBranches=$(git branch -r | grep 'release/' | tr -d 'origin/release/' | sort -n | xargs)
 
-echo $releaseBranches
+# Replace " " by ","
+releaseBranches=$( echo ${releaseBranches// /","})
+
+# echo $releaseBranches
 
 # get first param and remove "origin/release/"
 currentVersion=$(echo $1 | tr -d 'origin/release/')
 
-echo $currentVersion
+# echo $currentVersion
 
 # Remove frist part of branch string 
 branchesToMerge=$( echo $releaseBranches | grep -oP "$currentVersion.*")
 
 # Remove current version from string
 branchesToMerge=$(echo ${branchesToMerge//$currentVersion/})
-
-# Remove last caracter of the branch string
-branchesToMerge=${branchesToMerge::-1}
 
 # add "release/" for each version
 branchesToMerge=$( echo ${branchesToMerge//,/",release/"})
