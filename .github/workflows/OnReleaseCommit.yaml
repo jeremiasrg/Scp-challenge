@@ -13,3 +13,6 @@ jobs:
         run: chmod +x ./scripts/branchToPropagate.sh
       - name: get branches to propagate
         run: ./scripts/branchToPropagate.sh ${{ github.ref_name }}
+        id: get-branches
+      - name: Show branches to merge
+        run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE }}"

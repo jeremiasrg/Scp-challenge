@@ -32,4 +32,4 @@ branchesToMerge=${branchesToMerge#?}
 
 echo $branchesToMerge
 
-echo "::set-env name=BRANCHES_TO_MERGE::$branchesToMerge"
+echo "::set-output name=BRANCHES_TO_MERGE::$branchesToMerge"
