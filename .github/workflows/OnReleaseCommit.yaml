@@ -4,10 +4,11 @@ on:
     branches:
       - 'realease/*'
 jobs:
-  run-tests:
+  get-branches-to-propagate:
     runs-on: ubuntu-latest
     steps:
       - name: get branches to propagate
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - run: |
+          ./branchToPropagate.sh ${{ github.ref_name }}
         shell: bash
-        run: ./branchToPropagate.sh ${{ github.ref_name }}
