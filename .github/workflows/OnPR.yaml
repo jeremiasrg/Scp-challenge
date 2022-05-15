@@ -1,0 +1,13 @@
+name: Run Tests
+on: 
+  pull_request:
+    branches:
+      - master
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: gradle check
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
