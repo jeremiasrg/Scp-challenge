@@ -10,4 +10,4 @@ jobs:
       - name: 'Checkout repository'
         uses: actions/checkout@v3
       - name: get branches to propagate
-        run: ./branchToPropagate.sh ${{ github.ref_name }}
+        run: ./scripts/branchToPropagate.sh ${{ github.ref_name }}
