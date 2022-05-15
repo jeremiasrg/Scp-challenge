@@ -3,10 +3,10 @@
 # filter only "release/" branches
 # remove "release/" from the brach names
 # Sort as number and remove multilines
-releaseBranches=$(git branch -r | grep 'release/' | tr -d 'origin/release/' | sort -n | xargs)
+releaseBranches=$(git branch -a | grep 'release/' | tr -d 'origin/release/' | sort -n | xargs)
 echo $releaseBranches
 
-eval "git branch -r"
+eval "echo git branch -a"
 
 # Replace " " by ","
 releaseBranches=$( echo ${releaseBranches// /","})
