@@ -3,7 +3,7 @@
 # filter only "release/" branches
 # remove "release/" from the brach names
 # Sort as number and remove multilines
-eval "releaseBranches=$(ls | grep 'release/' | tr -d 'release/' | sort -n | tr '\n' ',')"
+eval "releaseBranches=$(git branch -r | grep 'release/' | tr -d 'release/' | sort -n | tr '\n' ',')"
 
 # echo $releaseBranches
 
