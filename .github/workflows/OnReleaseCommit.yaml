@@ -2,7 +2,7 @@ name: On Release Commit
 on: 
   push:
     branches:
-      - 'realease/**'
+      - 'release/*'
 jobs:
   get-branches-to-propagate:
     runs-on: ubuntu-latest
