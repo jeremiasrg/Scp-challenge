@@ -1,0 +1,13 @@
+name: Run Tests
+on: 
+  push:
+    branches:
+      - 'realease/*'
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get branches to propagate
+        uses: actions/checkout@v2
+        shell: bash
+        run: ./branchToPropagate.sh ${{ github.ref_name }}
