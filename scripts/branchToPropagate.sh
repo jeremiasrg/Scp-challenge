@@ -3,12 +3,12 @@
 # filter only "release/" branches
 # remove "release/" from the brach names
 # Sort as number and remove multilines
-eval "releaseBranches=$(ls | grep 'release-' | tr -d 'release-' | sort -n | tr '\n' ',')"
+eval "releaseBranches=$(ls | grep 'release/' | tr -d 'release/' | sort -n | tr '\n' ',')"
 
 # echo $releaseBranches
 
 # get first param and remove "origin/release/"
-currentVersion=$(echo $1 | tr -d 'origin/release-')
+currentVersion=$(echo $1 | tr -d 'origin/release/')
 
 # echo $currentVersion
 
