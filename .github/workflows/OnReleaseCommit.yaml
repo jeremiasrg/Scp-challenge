@@ -46,6 +46,7 @@ jobs:
       #     assignees: jeremiasrg
       #     reviewers: jeremiasrg
       #     draft: false
+      - uses: actions/checkout@v2
       - uses: repo-sync/pull-request@v2
         with:
           destination_branch: ${{ matrix.propagate-on }}
