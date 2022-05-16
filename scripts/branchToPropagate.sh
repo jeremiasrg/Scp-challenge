@@ -43,9 +43,6 @@ branchesToMerge=${branchesToMerge#??}
 # Concat with master
 branchesToMerge=$branchesToMerge",\"master\""
 
-# remove the first caracter of string (")
-branchesToMerge=${branchesToMerge#?}
-
 echo $branchesToMerge 
 
 branchesToMergeMTX=$(echo "[${branchesToMerge}]" | jq ".[]")
