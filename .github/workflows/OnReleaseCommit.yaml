@@ -20,13 +20,12 @@ jobs:
         run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
     outputs:
       branches-to-merge-str: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
-      branches-to-merge-mtx: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX }}"
   propagate:
     needs: get-branches-to-propagate
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        propagate-on: ${{ needs.get-branches-to-propagate.outputs.branches-to-merge-mtx }}
+        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
       - name: Check matrix value
         run: echo "The branches to merge ${{ matrix.propagate-on }}
