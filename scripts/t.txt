@@ -1,4 +1,0 @@
-  origin/main
-  origin/master
-  origin/release/5.2.1
-  origin/release/6.0
