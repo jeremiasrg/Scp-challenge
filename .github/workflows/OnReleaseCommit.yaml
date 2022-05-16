@@ -27,8 +27,10 @@ jobs:
       matrix:
         propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
-      - uses: repo-sync/pull-request@v2
-        with:
-          destination_branch: ${{ matrix.propagate-on }}
-          github_token: ${{ secrets.TOKEN }}
-          pr_label: "Automatic PR"
+      - name: Check matrix value
+        run: echo "The branches to merge ${{ matrix.propagate-on }}
+      # - uses: repo-sync/pull-request@v2
+      #   with:
+      #     destination_branch: ${{ matrix.propagate-on }}
+      #     github_token: ${{ secrets.TOKEN }}
+      #     pr_label: "Automatic PR"
