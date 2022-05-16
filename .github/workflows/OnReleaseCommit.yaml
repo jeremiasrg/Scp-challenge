@@ -25,12 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
+        propagate: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
-      - name: Check matrix value
-        run: echo "The branches to merge ${{ matrix }}
-      # - uses: repo-sync/pull-request@v2
-      #   with:
-      #     destination_branch: ${{ matrix.propagate-on }}
-      #     github_token: ${{ secrets.TOKEN }}
-      #     pr_label: "Automatic PR"
+      - uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: ${{ matrix.propagate }}
+          github_token: ${{ secrets.TOKEN }}
+          pr_label: "Automatic PR"
