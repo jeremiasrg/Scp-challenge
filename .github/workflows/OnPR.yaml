@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: 'Checkout repository'
         uses: actions/checkout@v3
-      - name: gradle check
+      - name: gradle build
         uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build
+      - name: Execute Gradle build
+        run: ./gradlew build
