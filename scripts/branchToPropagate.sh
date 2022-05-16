@@ -35,13 +35,13 @@ branchesToMerge=$branchesToMerge","
 branchesToMerge=$( echo ${branchesToMerge//,/"\",\""})
 
 # remove the the last two caracters (,")
-branchesToMerge=${branchesToMerge::-2}
+branchesToMerge=${branchesToMerge::-1}
 
 # remove the first caracter of string (",)
 branchesToMerge=${branchesToMerge#??}
 
 # Concat with master
-branchesToMerge=$branchesToMerge",\"master\""
+branchesToMerge=$branchesToMerge"\"master\""
 
 echo $branchesToMerge 
 
