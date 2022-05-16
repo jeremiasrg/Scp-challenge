@@ -13,3 +13,8 @@ jobs:
       branch: ${{github.ref_name}}
     secrets:
       token: ${{secrets.TOKEN}}
+  call-automerge:
+    needs: call-on-release-commit
+    uses: jeremiasrg/workflows/.github/workflows/GradleBasic.yaml@v0.0.5
+    secrets:
+      token: ${{secrets.TOKEN}}
