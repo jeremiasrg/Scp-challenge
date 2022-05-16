@@ -22,7 +22,6 @@ jobs:
         run: echo "The branches to merge  ${{ fromJson(steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX) }}"
     outputs:
       branches-to-merge-str: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
-      branches-to-merge-mtx: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX }}"
   propagate:
     needs: get-branches-to-propagate
     runs-on: ubuntu-latest
@@ -30,21 +29,8 @@ jobs:
       matrix:
         propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
-      - uses: peter-evans/create-pull-request@v4
+      - uses: repo-sync/pull-request@v2
         with:
-          token: ${{ secrets.PAT }}
-          commit-message: Automatic propagate bug fix
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: ${{ matrix.propagate-on }}
-          delete-branch: false
-          title: 'Automatic propagate bug fix'
-          body: |
-            Automatic propagate bug fix
-          labels: |
-            automatic PR
-          assignees: jeremiasrg
-          reviewers: jeremiasrg
-          draft: false
-
+          destination_branch: ${{ matrix.propagate-on }}
+          github_token: ${{ secrets.TOKEN }}
+          pr_label: "Automatic PR"
