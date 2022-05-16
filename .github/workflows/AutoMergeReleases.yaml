@@ -11,6 +11,6 @@ on:
   status: {}
 jobs:
   call-automerge:
-    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.8
+    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.9
     secrets:
       token: ${{secrets.TOKEN}}
