@@ -19,3 +19,10 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.TOKEN }}"
           MERGE_LABELS: "Automatic-PR,Release-Type,!work in progress"
+      - name: Merge result
+        if: steps.automerge.outputs.mergeResult == "merge_failed"
+        run: echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} failed!"
+          # Posibilities
+          # Open Github Issue
+          # Send email
+          # Send Teams Message or other
