@@ -36,3 +36,4 @@ branchesToMerge=${branchesToMerge#?}
 echo $branchesToMerge
 
 echo "::set-output name=BRANCHES_TO_MERGE::$branchesToMerge"
+echo "::set-output name=MATRIX_BRANCHES::{\"include\":[$branchesToMerge]}"
