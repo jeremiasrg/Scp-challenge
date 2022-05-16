@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        propagate: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-mtx) }}
+        propagate: ${{ needs.get-branches-to-propagate.outputs.branches-to-merge-mtx }}
     steps:
       - name: Check matrix value
         run: echo "The branches to merge ${{ matrix.propagate }}
