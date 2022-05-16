@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-mtx) }}
+        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
       - uses: peter-evans/create-pull-request@v4
         with:
