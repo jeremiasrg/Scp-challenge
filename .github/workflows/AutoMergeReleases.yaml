@@ -2,7 +2,7 @@ name: automerge
 on:
   pull_request:
     types:
-      - opened
+      - ready_for_review
   check_suite:
     types:
       - completed
