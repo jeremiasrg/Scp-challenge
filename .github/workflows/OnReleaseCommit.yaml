@@ -18,3 +18,30 @@ jobs:
         id: get-branches
       - name: Show branches to merge
         run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE }}"
+    outputs:
+      branches-to-merge: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE }}"
+  propagate:
+    needs: get-branches-to-propagate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge) }}
+    steps:
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: Automatic propagate bug fix
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: ${{ matrix.propagate-on }}
+          delete-branch: false
+          title: 'Automatic propagate bug fix'
+          body: |
+            Automatic propagate bug fix
+          labels: |
+            automatic PR
+          assignees: jeremiasrg
+          reviewers: jeremiasrg
+          draft: false
+
