@@ -4,7 +4,7 @@ Please, check below the resolution of each test item.
 
 
  
-## 1 - CI pipelines
+## 1 - CI pipelines 
 
   - a)
     - 1: [Click here](github\workflows\OnPR.yaml) to see the workflow to merge a selected branch with master assuring that master will always be buildable and without failing tests.
