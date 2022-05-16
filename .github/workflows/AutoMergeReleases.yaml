@@ -10,19 +10,21 @@ on:
       - completed
   status: {}
 jobs:
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
-      - id: automerge
-        name: automerge
-        uses: "pascalgn/automerge-action@v0.15.3"
-        env:
-          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
-          MERGE_LABELS: "Automatic-PR,Release-Type,!work in progress"
-      - name: Merge result
-        if: steps.automerge.outputs.mergeResult == "merge_failed"
-        run: echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} failed!"
+  # automerge:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - id: automerge
+  #       name: automerge
+  #       uses: "pascalgn/automerge-action@v0.15.3"
+  #       env:
+  #         GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+  #         MERGE_LABELS: "Automatic-PR,Release-Type,!work in progress"
+  #     - name: Merge result
+  #       if: steps.automerge.outputs.mergeResult == "merge_failed"
+  #       run: echo "Pull request ${{ steps.automerge.outputs.pullRequestNumber }} failed!"
           # Posibilities
           # Open Github Issue
           # Send email
           # Send Teams Message or other
+  call-automerge:
+    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.1
