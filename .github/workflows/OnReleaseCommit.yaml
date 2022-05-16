@@ -18,8 +18,6 @@ jobs:
         id: get-branches
       - name: Show branches to merge
         run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
-      - name: Show branches to merge 2
-        run: echo "The branches to merge  ${{ fromJson(steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX) }}"
     outputs:
       branches-to-merge-str: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
   propagate:
