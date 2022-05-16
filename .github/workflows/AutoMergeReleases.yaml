@@ -27,4 +27,4 @@ jobs:
           # Send email
           # Send Teams Message or other
   call-automerge:
-    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.2
+    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.3
