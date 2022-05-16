@@ -29,21 +29,25 @@ jobs:
       matrix:
         propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-str) }}
     steps:
-      - uses: peter-evans/create-pull-request@v4
+      # - uses: peter-evans/create-pull-request@v4
+      #   with:
+      #     token: ${{ secrets.TOKEN }}
+      #     commit-message: Automatic propagate bug fix
+      #     committer: GitHub <noreply@github.com>
+      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     signoff: false
+      #     branch: ${{ matrix.propagate-on }}
+      #     delete-branch: false
+      #     title: 'Automatic propagate bug fix'
+      #     body: |
+      #       Automatic propagate bug fix
+      #     labels: |
+      #       automatic PR
+      #     assignees: jeremiasrg
+      #     reviewers: jeremiasrg
+      #     draft: false
+      - uses: repo-sync/pull-request@v2
         with:
-          token: ${{ secrets.TOKEN }}
-          commit-message: Automatic propagate bug fix
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: ${{ matrix.propagate-on }}
-          delete-branch: false
-          title: 'Automatic propagate bug fix'
-          body: |
-            Automatic propagate bug fix
-          labels: |
-            automatic PR
-          assignees: jeremiasrg
-          reviewers: jeremiasrg
-          draft: false
+          destination_branch: ${{ matrix.propagate-on }}
+          github_token: ${{ secrets.TOKEN }}
 
