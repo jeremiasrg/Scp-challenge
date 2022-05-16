@@ -17,18 +17,18 @@ jobs:
         run: ./scripts/branchToPropagate.sh ${{ github.ref_name }}
         id: get-branches
       - name: Show branches to merge
-        run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE }}"
+        run: echo "The branches to merge  ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
       - name: Show branches to merge 2
-        run: echo "The branches to merge  ${{ fromJson(steps.get-branches.outputs.MATRIX_BRANCHES) }}"
+        run: echo "The branches to merge  ${{ fromJson(steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX) }}"
     outputs:
-      branches-to-merge: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE }}"
-      matrix-to-merge: ${{ steps.get-branches.outputs.MATRIX_BRANCHES }}"
+      branches-to-merge-str: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_STR }}"
+      branches-to-merge-mtx: ${{ steps.get-branches.outputs.BRANCHES_TO_MERGE_MTX }}"
   propagate:
     needs: get-branches-to-propagate
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.matrix-to-merge) }}
+        propagate-on: ${{ fromJson(needs.get-branches-to-propagate.outputs.branches-to-merge-mtx) }}
     steps:
       - uses: peter-evans/create-pull-request@v4
         with:

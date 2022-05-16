@@ -3,10 +3,11 @@
 # filter only "release/" branches
 # remove "release/" from the brach names
 # Sort as number and remove multilines
+# releaseBranches=$(git branch -r | grep 'release/' | tr -d 'origin/release/' | sort -n | xargs)
 releaseBranches=$(git branch -r | grep 'release/' | tr -d 'origin/release/' | sort -n | xargs)
 echo $releaseBranches
 
-eval "echo git branch -a"
+
 
 # Replace " " by ","
 releaseBranches=$( echo ${releaseBranches// /","})
@@ -22,18 +23,31 @@ echo $currentVersion
 branchesToMerge=$( echo $releaseBranches | grep -oP "$currentVersion.*")
 
 # Remove current version from string
-branchesToMerge=$(echo ${branchesToMerge//$currentVersion/})
+branchesToMerge=$( echo ${branchesToMerge//$currentVersion/})
 
 # add "release/" for each version
 branchesToMerge=$( echo ${branchesToMerge//,/",release/"})
 
 # Concat with master
-branchesToMerge=$branchesToMerge",master"
+branchesToMerge=$branchesToMerge","
 
-# remove the first caracter of string (,)
-branchesToMerge=${branchesToMerge#?}
+# add "release/" for each version
+branchesToMerge=$( echo ${branchesToMerge//,/"\",\""})
 
-echo $branchesToMerge
+# remove the the last two caracters (,")
+branchesToMerge=${branchesToMerge::-2}
 
-echo "::set-output name=BRANCHES_TO_MERGE::$branchesToMerge"
-echo "::set-output name=MATRIX_BRANCHES::{\"include\":[$branchesToMerge]}"
+# remove the first caracter of string (",)
+branchesToMerge=${branchesToMerge#??}
+
+# Concat with master
+branchesToMerge=$branchesToMerge",\"master\""
+
+
+echo $branchesToMerge 
+
+branchesToMergeMTX=$(echo "[${branchesToMerge}]" | jq ".[]")
+echo $branchesToMergeMTX 
+
+echo "::set-output name=BRANCHES_TO_MERGE_STR::$branchesToMerge"
+echo "::set-output name=BRANCHES_TO_MERGE_MTX::"
