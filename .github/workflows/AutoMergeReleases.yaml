@@ -27,4 +27,7 @@ jobs:
           # Send email
           # Send Teams Message or other
   call-automerge:
-    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.3
+    uses: jeremiasrg/workflows/.github/workflows/GradleBasic.yaml@v0.0.5
+    secrets:
+      token: ${{secrets.TOKEN}}
+      
