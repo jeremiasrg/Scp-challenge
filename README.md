@@ -3,6 +3,7 @@
 Please, check below the resolution of each test item.
 
 
+
 ## 1 - CI pipelines 
 
   - a)
