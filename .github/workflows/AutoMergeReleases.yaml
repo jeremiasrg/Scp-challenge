@@ -9,6 +9,6 @@ on:
   status: {}
 jobs:
   call-automerge:
-    uses: .github/workflows/ReusableAutoMerge.yaml@master
+    uses: ./.github/workflows/ReusableAutoMerge.yaml@master
     secrets:
       token: ${{secrets.TOKEN}}

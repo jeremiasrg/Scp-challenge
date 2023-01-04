@@ -5,6 +5,6 @@ on:
       - master
 jobs:
   call-gradle-basic:
-    uses: .github/workflows/ReusableAutoMerge.yaml@master
+    uses: ./.github/workflows/ReusableAutoMerge.yaml@master
     secrets:
       token: ${{secrets.TOKEN}}
