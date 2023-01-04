@@ -1,0 +1,12 @@
+name: On Release Commit
+on: 
+  push:
+    branches:
+      - 'release/*'
+jobs:
+  call-on-release-commit:
+    uses: ./.github/workflows/ReusableGetBranchesToPropagate.yaml
+    with:
+      branch: ${{github.ref_name}}
+    secrets:
+      token: ${{secrets.TOKEN}}
