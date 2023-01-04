@@ -3,7 +3,7 @@ on:
   pull_request:
     types:
       - opened
-      - labeled
+      - unlabeled
   check_suite:
     types:
       - completed
