@@ -52,4 +52,4 @@ echo $branchesToMergeMTX
 # echo "::set-output name=BRANCHES_TO_MERGE_MTX::$branchesToMergeMTX"
 
 echo "BRANCHES_TO_MERGE_STR=[$branchesToMerge]" >> $GITHUB_OUTPUT
-echo "BRANCHES_TO_MERGE_MTX=$branchesToMergeMTX" >> $GITHUB_OUTPUT
+# echo "BRANCHES_TO_MERGE_MTX=$branchesToMergeMTX" >> $GITHUB_OUTPUT
