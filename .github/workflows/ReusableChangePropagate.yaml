@@ -1,4 +1,4 @@
-name: On Release Commit
+name: Reusable Change Propagate
 on:
   workflow_call:
     secrets:
