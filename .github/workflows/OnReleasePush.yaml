@@ -5,7 +5,7 @@ on:
       - 'release/*'
 jobs:
   call-on-release-commit:
-    uses: ./ReusableGetBranchesToPropagate.yaml@master
+    uses: ./.github/workflows/ReusableGetBranchesToPropagate.yaml
     with:
       branch: ${{github.ref_name}}
     secrets:
