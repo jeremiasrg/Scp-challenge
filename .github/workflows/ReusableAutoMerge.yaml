@@ -1,4 +1,4 @@
-name: Auto merge releases
+name: Reusable Auto Merge
 on:
   workflow_call:
     secrets:
