@@ -5,6 +5,6 @@ on:
       - master
 jobs:
   call-gradle-basic:
-    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.16
+    uses: jeremiasrg/workflows/.github/workflows/AutoMergeReleases.yaml@v0.0.17
     secrets:
       token: ${{secrets.TOKEN}}
